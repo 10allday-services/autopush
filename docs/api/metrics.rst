@@ -21,12 +21,16 @@ Implementations
     :special-members: __init__
     :member-order: bysource
 
+<<<<<<< HEAD
 .. autoclass:: TaggedMetrics
     :members:
     :special-members: __init__
     :member-order: bysource
 
 .. autoclass:: TaggedMetrics
+=======
+.. autoclass:: DatadogMetrics
+>>>>>>> 7ac68d6d196019d18c942847bd857d2f572dd24c
     :members:
     :special-members: __init__
     :member-order: bysource

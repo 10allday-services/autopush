@@ -5,7 +5,11 @@ from mock import Mock, patch, call
 
 from autopush.metrics import (
     IMetrics,
+<<<<<<< HEAD
     TaggedMetrics,
+=======
+    DatadogMetrics,
+>>>>>>> 7ac68d6d196019d18c942847bd857d2f572dd24c
     SinkMetrics,
     periodic_reporter,
 )
@@ -32,9 +36,15 @@ class SinkMetricsTestCase(unittest.TestCase):
         assert sm.timing("test", 10) is None
 
 
+<<<<<<< HEAD
 class TaggedMetricsTestCase(unittest.TestCase):
     @patch("autopush.metrics.markus")
     def test_basic(self, mock_tag):
+=======
+class DatadogMetricsTestCase(unittest.TestCase):
+    @patch("autopush.metrics.datadog")
+    def test_basic(self, mock_dog):
+>>>>>>> 7ac68d6d196019d18c942847bd857d2f572dd24c
         hostname = "localhost"
 
         m = TaggedMetrics(namespace="testpush", hostname="localhost")
