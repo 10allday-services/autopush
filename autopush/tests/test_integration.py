@@ -186,7 +186,6 @@ keyid="http://example.org/bob/keys/123;salt="XZwpw6o37R-6qoZjw6KwAw"\
             http = httplib.HTTPSConnection(url.netloc, context=self.sslcontext)
         else:
             http = httplib.HTTPConnection(url.netloc)
-
         http.request("DELETE", url.path)
         resp = http.getresponse()
         http.close()
