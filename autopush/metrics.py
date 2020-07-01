@@ -89,11 +89,15 @@ def make_tags(base=None, **kwargs):
 
 class DatadogMetrics(object):
     """DataDog Metric backend"""
-    def __init__(self, api_key, app_key, hostname, flush_interval=10,
-                 namespace="autopush"):
+    def __init__(self, api_key=None, app_key=None,
+                 hostname="localhost", port=8125,
+                 flush_interval=10, namespace="autopush"):
 
-        datadog.initialize(api_key=api_key, app_key=app_key,
-                           host_name=hostname)
+        datadog.initialize(
+            api_key=api_key,
+            app_key=app_key,
+            statsd_host=hostname,
+            statsd_port=port)
         self._client = ThreadStats()
         self._flush_interval = flush_interval
         self._host = hostname
@@ -122,16 +126,14 @@ class DatadogMetrics(object):
 def from_config(conf):
     # type: (AutopushConfig) -> IMetrics
     """Create an IMetrics from the given config"""
-    if conf.datadog_api_key:
+    if conf.statsd_host:
         return DatadogMetrics(
-            hostname=logging.instance_id_or_hostname if conf.ami_id else
-            conf.hostname,
-            api_key=conf.datadog_api_key,
-            app_key=conf.datadog_app_key,
+            hostname=conf.statsd_host,
+            port=conf.statsd_port,
             flush_interval=conf.datadog_flush_interval,
         )
-    elif conf.statsd_host:
-        return TwistedMetrics(conf.statsd_host, conf.statsd_port)
+#    elif conf.statsd_host:
+#        return TwistedMetrics(conf.statsd_host, conf.statsd_port)
     else:
         return SinkMetrics()
 

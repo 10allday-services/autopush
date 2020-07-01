@@ -554,7 +554,7 @@ class Test_Data(IntegrationBase):
         }
         # Piggy back a check for stored source metrics
         self.conn.db.metrics = DatadogMetrics(
-            "someapikey", "someappkey", namespace="testpush",
+            namespace="testpush",
             hostname="localhost")
         self.conn.db.metrics._client = Mock()
 

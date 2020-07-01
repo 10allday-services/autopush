@@ -2,7 +2,7 @@ apns
 attrs
 autobahn[twisted]
 boto3
-cffi
+cffi ; platform_python_implementation == "CPython"
 click
 configargparse
 cryptography
