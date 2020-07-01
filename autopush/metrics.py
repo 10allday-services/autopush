@@ -13,8 +13,6 @@ from txstatsd.metrics.metrics import Metrics
 import datadog
 from datadog import ThreadStats
 
-from autopush import logging
-
 if TYPE_CHECKING:  # pragma: nocover
     from autopush.config import AutopushConfig  # noqa
 
